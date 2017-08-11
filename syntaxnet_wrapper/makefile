@@ -7,9 +7,9 @@ configure_syntaxnet:
 	rm -rf models
 	git clone --recursive https://github.com/tensorflow/models.git && \
 	cd models/syntaxnet/tensorflow && \
-	virtualenv /tmp/venv && \
-	/tmp/venv/bin/pip install tensorflow && \
-	printf '/tmp/venv/bin/python\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | ./configure
+	virtualenv /home/bahri/tmp/venv && \
+	/home/bahri/tmp/venv/bin/pip install tensorflow && \
+	printf '/home/bahri/tmp/venv/bin/python\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | ./configure
 
 build_syntaxnet: configure_syntaxnet
 	@echo "************************************************************" 1>&2
@@ -31,7 +31,7 @@ copy_demo_scripts: build_syntaxnet
 	cp models/syntaxnet/syntaxnet/models/parsey_universal/tokenize_zh.sh models/syntaxnet/tokenize_zh.sh
 
 clear_tmp_venv: copy_demo_scripts
-	rm -rf /tmp/venv
+	rm -rf /home/bahri/tmp/venv
 	mkdir pids
 	chmod 777 pids
 	@echo "************************************************************" 1>&2
